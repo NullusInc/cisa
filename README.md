@@ -25,8 +25,6 @@ Run the development server:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site. The page auto-updates as you edit files in `src/app`.
-
 ## Available Scripts
 
 | Command | Description |

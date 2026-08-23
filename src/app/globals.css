@@ -1,25 +1,42 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fffcf4;
+  --foreground: #262626;
+  --primary: #185029;
+  --secondary: #413a1a;
+  --accent: #ee5c13,
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
   --font-sans: var(--font-inter);
+  --animate-marquee: marquee 1s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
+/* TODO: TA-05: Add dark mode */
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@keyframes marquee {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 34px 0;
+  }
 }
