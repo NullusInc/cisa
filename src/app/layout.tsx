@@ -1,25 +1,23 @@
-import type { Metadata } from "next";
-import localFont from 'next/font/local'
+import type { Metadata, Viewport } from "next";
+import { Inter } from 'next/font/google';
 import "./globals.css";
 
-const inter = localFont({
-  src: [
-    {
-      path: '../fonts/Inter-Variable.ttf',
-      style: 'normal',
-    },
-    {
-      path: '../fonts/Inter-Italic-Variable.ttf',
-      style: 'italic',
-    },
-  ],
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-inter',
-  weight: '100 900',
 })
 
 export const metadata: Metadata = {
   title: "City Innovation Students' Association",
   description: "The City Innovation Students' Association (CISA) is the undergraduate government body with the mission to represent academic student interests and foster an inclusive community within the School of Architecture, Planning and Landscape.",
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#fffcf4',
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
