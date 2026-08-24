@@ -33,13 +33,25 @@ html {
 
 html,
 body {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Helvetica, Arial, sans-serif;
+  border-top: 9px solid #19502A;
+  border-left: 9px solid #19502A;
+  border-right: 9px solid #19502A;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  body {
+    border-top: 18px solid #19502A;
+    border-left: 18px solid #19502A;
+    border-right: 18px solid #19502A;
+  }
 }
 
 @keyframes marquee {

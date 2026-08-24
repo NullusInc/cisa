@@ -55,7 +55,7 @@ type GLTFResult = GLTF & {
   animations: GLTFAction[]
 }
 
-export function Model(props: JSX.IntrinsicElements['group']) {
+export function SketchfabModel(props: JSX.IntrinsicElements['group']) {
   const group = React.useRef<THREE.Group>()
   const { scene, animations } = useGLTF('/models/smol_ame_in_an_upcycled_terrarium_hololiveen-transformed.glb')
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
@@ -65,13 +65,12 @@ export function Model(props: JSX.IntrinsicElements['group']) {
   React.useEffect(() => {
     if (animations.length > 0 && actions['Animation']) {
       actions['Animation'].play()
-      console.log('✓ Playing Sketchfab model animation')
     }
   }, [animations, actions])
 
   useFrame(() => {
     if (group.current) {
-      group.current.rotation.y += 0.002
+      group.current.rotation.y += 0.000
     }
   })
 
