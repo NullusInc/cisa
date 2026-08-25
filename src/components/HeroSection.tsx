@@ -1,19 +1,18 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { Canvas } from '@react-three/fiber';
-import { SketchfabModel } from './SketchfabModel';
+
+const HeroCanvas = dynamic(
+  () => import('./HeroCanvas').then((mod) => ({ default: mod.HeroCanvas })),
+  { ssr: false },
+);
 
 export function HeroSection() {
   return (
     <section className="relative w-full h-dvh overflow-hidden">
       <div className="absolute inset-0">
-        <Canvas style={{ width: '100%', height: '100%' }} camera={{ position: [3, 5, 8], fov: 50 }} gl={{ antialias: true, alpha: true }} dpr={[1, 1.5]}>
-          <ambientLight intensity={1.5} />
-          <pointLight position={[10, 10, 10]} intensity={1.2} />
-          <pointLight position={[-10, -10, 5]} intensity={0.5} />
-          <SketchfabModel />
-        </Canvas>
+        <HeroCanvas />
       </div>
 
       <div className="absolute inset-0 bg-black/20" />
@@ -30,10 +29,8 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="absolute inset-x-4 top-2/3 z-10 flex justify-center sm:inset-x-8 sm:bottom-6 sm:top-auto sm:justify-end sm:pr-0 lg:right-12">
-        <h1
-          className="font-sans text-center sm:text-right text-[clamp(1.75rem,0.7rem+5.4vw,6rem)] font-bold tracking-tight leading-[1.1] text-primary"
-        >
+      <div className="absolute inset-x-4 top-2/3 z-10 sm:inset-x-8 sm:bottom-6 sm:top-auto lg:right-12">
+        <h1 className="font-sans w-full text-right text-[clamp(1.75rem,0.7rem+5.4vw,6rem)] font-bold tracking-tight leading-[0.9] text-primary">
           City Innovation
           <br />
           Students’ Association

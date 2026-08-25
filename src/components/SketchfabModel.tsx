@@ -8,9 +8,11 @@ Source: https://sketchfab.com/3d-models/smol-ame-in-an-upcycled-terrarium-hololi
 Title: Smol Ame in an Upcycled Terrarium [HololiveEn]
 */
 
+'use client'
+
 import * as THREE from 'three'
 import React, { JSX } from 'react'
-import { useGraph, useFrame } from '@react-three/fiber'
+import { useGraph } from '@react-three/fiber'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { GLTF, SkeletonUtils } from 'three-stdlib'
 
@@ -56,23 +58,20 @@ type GLTFResult = GLTF & {
 }
 
 export function SketchfabModel(props: JSX.IntrinsicElements['group']) {
-  const group = React.useRef<THREE.Group>()
+  const group = React.useRef<THREE.Group>(null)
   const { scene, animations } = useGLTF('/models/smol_ame_in_an_upcycled_terrarium_hololiveen-transformed.glb')
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
   const { nodes, materials } = useGraph(clone) as unknown as GLTFResult
   const { actions } = useAnimations(animations, group)
 
   React.useEffect(() => {
-    if (animations.length > 0 && actions['Animation']) {
-      actions['Animation'].play()
+    const action = actions['Animation']
+    if (!action) return
+    action.reset().play()
+    return () => {
+      action.stop()
     }
-  }, [animations, actions])
-
-  useFrame(() => {
-    if (group.current) {
-      group.current.rotation.y += 0.000
-    }
-  })
+  }, [actions])
 
   return (
     <group ref={group} {...props} dispose={null}>
