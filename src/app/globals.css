@@ -6,6 +6,7 @@
   --primary: #185029;
   --secondary: #413a1a;
   --accent: #ee5c13;
+  --page-frame: 9px;
 }
 
 @theme inline {
@@ -33,7 +34,7 @@ html {
 
 html,
 body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 body {
@@ -47,6 +48,10 @@ body {
 }
 
 @media (min-width: 640px) {
+  :root {
+    --page-frame: 18px;
+  }
+
   body {
     border-top: 18px solid #19502A;
     border-left: 18px solid #19502A;
@@ -60,5 +65,50 @@ body {
   }
   to {
     background-position: 34px 0;
+  }
+}
+
+@keyframes logo-grow {
+  from {
+    transform: scale(0.04);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes logo-fill {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+.logo-grow-inner {
+  transform: scale(0.04);
+  transform-origin: center center;
+  animation: logo-grow 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.logo-grow-paused {
+  animation: none;
+}
+
+.logo-fill-layer {
+  clip-path: inset(100% 0 0 0);
+}
+
+.logo-fill-layer.is-filling {
+  animation: logo-fill 2.2s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-grow-inner,
+  .logo-fill-layer.is-filling {
+    animation: none;
+    transform: none;
+    clip-path: none;
   }
 }
