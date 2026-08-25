@@ -15,7 +15,7 @@ export function HeroSection() {
         <HeroCanvas />
       </div>
 
-      <div className="absolute inset-0 bg-black/20" />
+  
 
       <div className="absolute inset-x-0 top-8 z-10 flex justify-center sm:inset-x-auto sm:left-6 sm:top-8">
         <Image
