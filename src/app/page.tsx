@@ -1,5 +1,5 @@
-import { HeroSection } from "@/components/HeroSection";
+import { Events } from "@/components/Events";
 
 export default function Home() {
-  return <HeroSection />;
+  return <Events />;
 }
