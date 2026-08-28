@@ -1,9 +1,25 @@
 'use client';
 
 import Image from 'next/image';
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
 const LOGO_SRC = '/images/branding/CISA-Logo-Orange.svg';
+
+/** Extra wait after CSS animations so the last frame can settle before the next phase. */
+const PHASE_BUFFER_MS = 100;
+
+const GROW_DURATION_MS = 900;
+const FILL_DURATION_MS = 1400;
+const HOLD_DELAY_MS = 120;
+const DOCK_DURATION_MS = 900;
+const DOCK_FALLBACK_MS = DOCK_DURATION_MS + PHASE_BUFFER_MS * 2;
+const DOCK_EASING = 'cubic-bezier(0.65, 0, 0.35, 1)';
 
 type Phase = 'prepare' | 'grow' | 'fill' | 'hold' | 'dock' | 'settled';
 
@@ -32,12 +48,18 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
 
   useEffect(() => {
     if (phase === 'grow') {
-      const timer = window.setTimeout(() => setPhase('fill'), 1500);
+      const timer = window.setTimeout(
+        () => setPhase('fill'),
+        GROW_DURATION_MS + PHASE_BUFFER_MS
+      );
       return () => window.clearTimeout(timer);
     }
 
     if (phase === 'fill') {
-      const timer = window.setTimeout(() => setPhase('hold'), 2300);
+      const timer = window.setTimeout(
+        () => setPhase('hold'),
+        FILL_DURATION_MS + PHASE_BUFFER_MS
+      );
       return () => window.clearTimeout(timer);
     }
 
@@ -45,7 +67,7 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
       const timer = window.setTimeout(() => {
         fromRectRef.current = logoRef.current?.getBoundingClientRect() ?? null;
         setPhase('dock');
-      }, 180);
+      }, HOLD_DELAY_MS);
       return () => window.clearTimeout(timer);
     }
   }, [phase]);
@@ -68,7 +90,7 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
     let innerFrame = 0;
     const frame = window.requestAnimationFrame(() => {
       innerFrame = window.requestAnimationFrame(() => {
-        logo.style.transition = 'transform 1.4s cubic-bezier(0.22, 1, 0.36, 1)';
+        logo.style.transition = `transform ${DOCK_DURATION_MS}ms ${DOCK_EASING}`;
         logo.style.transform = 'none';
       });
     });
@@ -82,7 +104,7 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
     };
 
     logo.addEventListener('transitionend', onEnd);
-    const fallback = window.setTimeout(finish, 1600);
+    const fallback = window.setTimeout(finish, DOCK_FALLBACK_MS);
 
     return () => {
       window.cancelAnimationFrame(frame);
@@ -92,12 +114,16 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
     };
   }, [phase, finish]);
 
-  const isCentered = phase === 'prepare' || phase === 'grow' || phase === 'fill' || phase === 'hold';
+  const isCentered =
+    phase === 'prepare' ||
+    phase === 'grow' ||
+    phase === 'fill' ||
+    phase === 'hold';
 
   return (
     <>
       <div
-        className={`fixed inset-0 z-20 bg-background transition-opacity duration-1000 ${
+        className={`fixed inset-0 z-20 bg-background transition-opacity duration-700 ${
           phase === 'settled' ? 'pointer-events-none opacity-0' : 'opacity-100'
         }`}
         aria-hidden
@@ -120,7 +146,11 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
         >
           <div
             className={`relative h-full w-full ${
-              phase === 'prepare' ? 'logo-grow-inner logo-grow-paused' : phase === 'grow' ? 'logo-grow-inner' : ''
+              phase === 'prepare'
+                ? 'logo-grow-inner logo-grow-paused'
+                : phase === 'grow'
+                  ? 'logo-grow-inner'
+                  : ''
             }`}
           >
             <Image
@@ -134,7 +164,12 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
             />
             <div
               className={`logo-fill-layer absolute inset-0 ${
-                phase === 'fill' || phase === 'hold' || phase === 'dock' || phase === 'settled' ? 'is-filling' : ''
+                phase === 'fill' ||
+                phase === 'hold' ||
+                phase === 'dock' ||
+                phase === 'settled'
+                  ? 'is-filling'
+                  : ''
               }`}
             >
               <Image

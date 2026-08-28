@@ -1,16 +1,17 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
-import "./globals.css";
+import './globals.css';
 
 const inter = Inter({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-inter',
-})
+});
 
 export const metadata: Metadata = {
   title: "City Innovation Students' Association",
-  description: "The City Innovation Students' Association (CISA) is the undergraduate government body with the mission to represent academic student interests and foster an inclusive community within the School of Architecture, Planning and Landscape.",
+  description:
+    "The City Innovation Students' Association (CISA) is the undergraduate government body with the mission to represent academic student interests and foster an inclusive community within the School of Architecture, Planning and Landscape.",
 };
 
 export const viewport: Viewport = {
@@ -20,10 +21,10 @@ export const viewport: Viewport = {
   themeColor: '#fffcf4',
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+    <html lang="en" className={`${inter.variable} antialiased`}>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }
