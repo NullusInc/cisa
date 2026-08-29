@@ -18,7 +18,6 @@
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --font-sans: var(--font-inter);
-  --animate-marquee: marquee 1s linear infinite;
 }
 
 /* TODO: TA-05: Add dark mode */
@@ -108,4 +107,17 @@ body {
     transform: none;
     clip-path: none;
   }
+}
+
+@keyframes marquee-2 {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% / var(--repeat-count, 2))); }
+}
+
+.animate-marquee {
+  animation: marquee-2 30s linear infinite;
+}
+
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused;
 }
