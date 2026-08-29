@@ -2,11 +2,11 @@
 
 import dynamic from 'next/dynamic';
 import { useCallback, useState } from 'react';
-import { CisaLogoIntro } from '@/components/CisaLogoIntro';
+import { CisaLogoIntro } from '@/components/ui/CisaLogoIntro';
 
 const HeroCanvas = dynamic(
   () =>
-    import('@/components/HeroCanvas').then((mod) => ({
+    import('@/components/sections/hero/HeroCanvas').then((mod) => ({
       default: mod.HeroCanvas,
     })),
   { ssr: false }
