@@ -3,6 +3,7 @@ import Image from "next/image";
 interface EventImagesProps {
     image: string[];
     alignment: "Vertical" | "Horizontal";
+    title: string;
 }
 
 const MAX_IMAGES = 3;
@@ -23,28 +24,28 @@ const VERTICAL_PLACEMENT: Record<number, Placement[]> = {
     2: [
         {
             wrapper: "left-1/2 z-20 -translate-x-1/2",
-            frame: "origin-bottom -rotate-[2deg] group-hover:-rotate-[3deg]",
+            frame: "origin-bottom -rotate-[2deg] group-hover:-rotate-[3deg] group-focus-within:-rotate-[3deg]",
         },
         {
             wrapper:
-                "left-1/2 z-10 -translate-x-[calc(50%+0.65rem)] group-hover:-translate-x-[calc(50%+5rem)]",
-            frame: "origin-bottom -rotate-[6deg] group-hover:-rotate-[9deg]",
+                "left-1/2 z-10 -translate-x-[calc(50%+0.65rem)] group-hover:-translate-x-[calc(50%+5rem)] group-focus-within:-translate-x-[calc(50%+5rem)]",
+            frame: "origin-bottom -rotate-[6deg] group-hover:-rotate-[9deg] group-focus-within:-rotate-[9deg]",
         },
     ],
     3: [
         {
             wrapper: "left-1/2 z-30 -translate-x-1/2",
-            frame: "origin-bottom -rotate-[1.5deg] group-hover:-rotate-[2deg]",
+            frame: "origin-bottom -rotate-[1.5deg] group-hover:-rotate-[2deg] group-focus-within:-rotate-[2deg]",
         },
         {
             wrapper:
-                "left-1/2 z-10 -translate-x-[calc(50%+0.85rem)] group-hover:-translate-x-[calc(50%+5.1rem)]",
-            frame: "origin-bottom -rotate-[6deg] group-hover:-rotate-[9deg]",
+                "left-1/2 z-10 -translate-x-[calc(50%+0.85rem)] group-hover:-translate-x-[calc(50%+5.1rem)] group-focus-within:-translate-x-[calc(50%+5.1rem)]",
+            frame: "origin-bottom -rotate-[6deg] group-hover:-rotate-[9deg] group-focus-within:-rotate-[9deg]",
         },
         {
             wrapper:
-                "left-1/2 z-20 -translate-x-[calc(50%-0.85rem)] group-hover:-translate-x-[calc(50%-5.1rem)]",
-            frame: "origin-bottom rotate-[5deg] group-hover:rotate-[8deg]",
+                "left-1/2 z-20 -translate-x-[calc(50%-0.85rem)] group-hover:-translate-x-[calc(50%-5.1rem)] group-focus-within:-translate-x-[calc(50%-5.1rem)]",
+            frame: "origin-bottom rotate-[5deg] group-hover:rotate-[8deg] group-focus-within:rotate-[8deg]",
         },
     ],
 };
@@ -63,29 +64,29 @@ const HORIZONTAL_PLACEMENT: Record<number, Placement[]> = {
         },
         {
             wrapper:
-                "left-1/2 z-10 -translate-x-[52%] -translate-y-[calc(50%-0.85rem)] group-hover:-translate-y-[calc(50%-1.7rem)]",
-            frame: "-rotate-[4deg] group-hover:-rotate-[8deg]",
+                "left-1/2 z-10 -translate-x-[52%] -translate-y-[calc(50%-0.85rem)] group-hover:-translate-y-[calc(50%-1.7rem)] group-focus-within:-translate-y-[calc(50%-1.7rem)]",
+            frame: "-rotate-[4deg] group-hover:-rotate-[8deg] group-focus-within:-rotate-[8deg]",
         },
     ],
     3: [
         {
             wrapper: "left-1/2 z-30 -translate-x-1/2 -translate-y-1/2",
-            frame: "rotate-[2deg] group-hover:rotate-[3deg]",
+            frame: "rotate-[2deg] group-hover:rotate-[3deg] group-focus-within:rotate-[3deg]",
         },
         {
             wrapper:
-                "left-1/2 z-10 -translate-x-[54%] -translate-y-[calc(50%+1.3rem)] group-hover:-translate-x-[56%] group-hover:-translate-y-[calc(50%+2.2rem)]",
-            frame: "-rotate-[5deg] group-hover:-rotate-[9deg]",
+                "left-1/2 z-10 -translate-x-[54%] -translate-y-[calc(50%+1.3rem)] group-hover:-translate-x-[56%] group-hover:-translate-y-[calc(50%+2.2rem)] group-focus-within:-translate-x-[56%] group-focus-within:-translate-y-[calc(50%+2.2rem)]",
+            frame: "-rotate-[5deg] group-hover:-rotate-[9deg] group-focus-within:-rotate-[9deg]",
         },
         {
             wrapper:
-                "left-1/2 z-20 -translate-x-[46%] -translate-y-[calc(50%-1.3rem)] group-hover:-translate-x-[44%] group-hover:-translate-y-[calc(50%-2.2rem)]",
-            frame: "rotate-[4deg] group-hover:rotate-[9deg]",
+                "left-1/2 z-20 -translate-x-[46%] -translate-y-[calc(50%-1.3rem)] group-hover:-translate-x-[44%] group-hover:-translate-y-[calc(50%-2.2rem)] group-focus-within:-translate-x-[44%] group-focus-within:-translate-y-[calc(50%-2.2rem)]",
+            frame: "rotate-[4deg] group-hover:rotate-[9deg] group-focus-within:rotate-[9deg]",
         },
     ],
 };
 
-export const EventImage = ({ image, alignment }: EventImagesProps) => {
+export const EventImage = ({ image, alignment, title }: EventImagesProps) => {
     const stack = image.slice(0, MAX_IMAGES);
     const count = stack.length;
 
@@ -120,7 +121,7 @@ export const EventImage = ({ image, alignment }: EventImagesProps) => {
                         <div className={`${frame} ${placement.frame}`.trim()}>
                             <Image
                                 src={src}
-                                alt=""
+                                alt={`${title} photo ${index + 1}`}
                                 fill
                                 className="object-cover"
                                 sizes={isVertical ? "256px" : "384px"}
