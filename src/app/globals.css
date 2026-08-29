@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #fffcf4;
@@ -6,6 +6,9 @@
   --primary: #185029;
   --secondary: #413a1a;
   --accent: #ee5c13;
+  --page-frame: 9px;
+  --logo-grow-duration: 0.9s;
+  --logo-fill-duration: 1.4s;
 }
 
 @theme inline {
@@ -29,24 +32,26 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+}
+
+html {
   overflow-x: hidden;
+  background: var(--background);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Helvetica, Arial, sans-serif;
-  border-top: 9px solid #19502A;
-  border-left: 9px solid #19502A;
-  border-right: 9px solid #19502A;
+  border-top: var(--page-frame) solid #19502a;
+  border-left: var(--page-frame) solid #19502a;
+  border-right: var(--page-frame) solid #19502a;
   box-sizing: border-box;
 }
 
 @media (min-width: 640px) {
-  body {
-    border-top: 18px solid #19502A;
-    border-left: 18px solid #19502A;
-    border-right: 18px solid #19502A;
+  :root {
+    --page-frame: 18px;
   }
 }
 
@@ -57,6 +62,43 @@ body {
   to {
     background-position: 34px 0;
   }
+}
+
+@keyframes logo-grow {
+  from {
+    transform: scale(0.04);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes logo-fill {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+.logo-grow-inner {
+  transform: scale(0.04);
+  transform-origin: center center;
+  animation: logo-grow var(--logo-grow-duration) cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.logo-grow-paused {
+  animation: none;
+}
+
+.logo-fill-layer {
+  clip-path: inset(100% 0 0 0);
+}
+
+.logo-fill-layer.is-filling {
+  animation: logo-fill var(--logo-fill-duration) ease-out forwards;
 }
 
 .events-section {
@@ -130,6 +172,13 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .logo-grow-inner,
+  .logo-fill-layer.is-filling {
+    animation: none;
+    transform: none;
+    clip-path: none;
+  }
+
   .event-photo-item,
   .event-photo-item > * {
     transition: none;
