@@ -56,19 +56,27 @@ export const Events = () => {
     const { left, right } = splitEventColumns(events);
 
     return (
-        <section className="flex w-full justify-center px-6 py-16 sm:px-8">
-            <div className="events-board relative grid grid-cols-1 items-start gap-x-12 gap-y-8 sm:grid-cols-[auto_auto]">
-                <h1 className="z-10 font-sans text-4xl font-bold leading-none tracking-tight text-primary sm:absolute sm:left-0 sm:top-0 sm:text-5xl">
+        <section className="events-section flex w-full justify-center px-6 py-16 sm:px-8">
+            <div className="events-board relative grid grid-cols-1 items-start justify-items-center gap-x-12 gap-y-8 xl:grid-cols-[auto_auto] xl:justify-items-stretch">
+                <h1 className="z-10 w-full font-sans text-4xl font-bold leading-none tracking-tight text-primary xl:absolute xl:left-0 xl:top-0 xl:w-auto xl:text-5xl">
                     Events
                 </h1>
                 <div className="events-board__col events-board__left">
                     {left.map((event, index) => (
-                        <EventCard key={`left-${index}`} {...event} />
+                        <EventCard
+                            key={`left-${index}`}
+                            {...event}
+                            style={{ order: 2 * (index + 1) }}
+                        />
                     ))}
                 </div>
                 <div className="events-board__col">
                     {right.map((event, index) => (
-                        <EventCard key={`right-${index}`} {...event} />
+                        <EventCard
+                            key={`right-${index}`}
+                            {...event}
+                            style={{ order: 2 * index + 1 }}
+                        />
                     ))}
                 </div>
             </div>

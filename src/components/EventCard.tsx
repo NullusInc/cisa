@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { EventImage } from "./EventImage";
 
 interface EventCardProps {
@@ -5,6 +6,7 @@ interface EventCardProps {
     image: string[];
     date: Date;
     alignment: "Vertical" | "Horizontal";
+    style?: CSSProperties;
 }
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -13,19 +15,28 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
 });
 
-export const EventCard = ({ title, image, date, alignment }: EventCardProps) => {
+export const EventCard = ({
+    title,
+    image,
+    date,
+    alignment,
+    style,
+}: EventCardProps) => {
     return (
-        <article className="event-grid relative shrink-0 overflow-hidden">
-            <h2 className="absolute left-0 top-[calc(var(--event-cell)/2)] z-10 flex h-[calc(var(--event-cell)*0.42)] w-[calc(var(--event-cell)*2.15)] -translate-y-1/2 items-center bg-primary px-3 font-sans text-sm font-bold tracking-tight text-background sm:text-base">
+        <article
+            className="event-grid group relative overflow-hidden hover:z-20 hover:overflow-visible"
+            style={style}
+        >
+            <h2 className="absolute left-0 top-[calc(var(--event-row)*0.15)] z-10 flex h-[calc(var(--event-row)*0.32)] w-[calc(var(--event-col)*2.15)] items-center bg-primary px-[0.35em] font-sans text-[length:calc(var(--event-col)*0.16)] font-bold tracking-tight text-background">
                 {title}
             </h2>
             <time
                 dateTime={date.toISOString()}
-                className="col-start-6 row-start-5 z-10 flex items-end justify-end overflow-hidden p-1.5 font-sans text-[0.65rem] leading-none tabular-nums whitespace-nowrap text-primary sm:p-2 sm:text-xs"
+                className="col-start-4 row-start-3 z-10 flex items-end justify-center overflow-hidden px-0.5 pb-[0.2em] font-sans text-[length:calc(var(--event-col)*0.12)] leading-none tabular-nums tracking-tight whitespace-nowrap text-primary"
             >
                 {dateFormatter.format(date)}
             </time>
-            <div className="col-span-6 col-start-1 row-span-5 row-start-1 flex items-center justify-center">
+            <div className="col-span-4 col-start-1 row-span-3 row-start-1 flex items-center justify-center">
                 <EventImage image={image} alignment={alignment} />
             </div>
         </article>

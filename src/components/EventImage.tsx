@@ -23,25 +23,28 @@ const VERTICAL_PLACEMENT: Record<number, Placement[]> = {
     2: [
         {
             wrapper: "left-1/2 z-20 -translate-x-1/2",
-            frame: "origin-bottom -rotate-[2deg]",
+            frame: "origin-bottom -rotate-[2deg] group-hover:-rotate-[3deg]",
         },
         {
-            wrapper: "left-1/2 z-10 -translate-x-[calc(50%+0.65rem)]",
-            frame: "origin-bottom -rotate-[6deg]",
+            wrapper:
+                "left-1/2 z-10 -translate-x-[calc(50%+0.65rem)] group-hover:-translate-x-[calc(50%+5rem)]",
+            frame: "origin-bottom -rotate-[6deg] group-hover:-rotate-[9deg]",
         },
     ],
     3: [
         {
             wrapper: "left-1/2 z-30 -translate-x-1/2",
-            frame: "origin-bottom -rotate-[1.5deg]",
+            frame: "origin-bottom -rotate-[1.5deg] group-hover:-rotate-[2deg]",
         },
         {
-            wrapper: "left-1/2 z-10 -translate-x-[calc(50%+0.85rem)]",
-            frame: "origin-bottom -rotate-[6deg]",
+            wrapper:
+                "left-1/2 z-10 -translate-x-[calc(50%+0.85rem)] group-hover:-translate-x-[calc(50%+5.1rem)]",
+            frame: "origin-bottom -rotate-[6deg] group-hover:-rotate-[9deg]",
         },
         {
-            wrapper: "left-1/2 z-20 -translate-x-[calc(50%-0.85rem)]",
-            frame: "origin-bottom rotate-[5deg]",
+            wrapper:
+                "left-1/2 z-20 -translate-x-[calc(50%-0.85rem)] group-hover:-translate-x-[calc(50%-5.1rem)]",
+            frame: "origin-bottom rotate-[5deg] group-hover:rotate-[8deg]",
         },
     ],
 };
@@ -55,30 +58,29 @@ const HORIZONTAL_PLACEMENT: Record<number, Placement[]> = {
     ],
     2: [
         {
-            wrapper:
-                "left-1/2 z-20 -translate-x-[46%] -translate-y-[calc(50%+0.25rem)]",
-            frame: "rotate-[3deg]",
+            wrapper: "left-1/2 z-20 -translate-x-1/2 -translate-y-1/2",
+            frame: "rotate-[2deg]",
         },
         {
             wrapper:
-                "left-1/2 z-10 -translate-x-[54%] -translate-y-[calc(50%-0.35rem)]",
-            frame: "-rotate-[5deg]",
+                "left-1/2 z-10 -translate-x-[52%] -translate-y-[calc(50%-0.85rem)] group-hover:-translate-y-[calc(50%-1.7rem)]",
+            frame: "-rotate-[4deg] group-hover:-rotate-[8deg]",
         },
     ],
     3: [
         {
-            wrapper:
-                "left-1/2 z-30 -translate-x-[45%] -translate-y-[calc(50%+0.4rem)]",
-            frame: "rotate-[3deg]",
-        },
-        {
-            wrapper: "left-1/2 z-20 -translate-x-1/2 -translate-y-1/2",
-            frame: "-rotate-[1deg]",
+            wrapper: "left-1/2 z-30 -translate-x-1/2 -translate-y-1/2",
+            frame: "rotate-[2deg] group-hover:rotate-[3deg]",
         },
         {
             wrapper:
-                "left-1/2 z-10 -translate-x-[55%] -translate-y-[calc(50%-0.45rem)]",
-            frame: "-rotate-[5deg]",
+                "left-1/2 z-10 -translate-x-[54%] -translate-y-[calc(50%+1.3rem)] group-hover:-translate-x-[56%] group-hover:-translate-y-[calc(50%+2.2rem)]",
+            frame: "-rotate-[5deg] group-hover:-rotate-[9deg]",
+        },
+        {
+            wrapper:
+                "left-1/2 z-20 -translate-x-[46%] -translate-y-[calc(50%-1.3rem)] group-hover:-translate-x-[44%] group-hover:-translate-y-[calc(50%-2.2rem)]",
+            frame: "rotate-[4deg] group-hover:rotate-[9deg]",
         },
     ],
 };
@@ -111,7 +113,7 @@ export const EventImage = ({ image, alignment }: EventImagesProps) => {
                 return (
                     <div
                         key={`${src}-${index}`}
-                        className={`absolute ${
+                        className={`event-photo-item absolute ${
                             isVertical ? "bottom-0" : "top-1/2"
                         } ${placement.wrapper}`}
                     >
