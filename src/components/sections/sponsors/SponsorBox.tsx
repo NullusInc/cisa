@@ -9,8 +9,8 @@ export function SponsorBox(sponsor: DiscountBoxType) {
         <Image
           src={sponsor.image}
           alt={sponsor.companyName}
-          width={100}
-          height={100}
+          width={128}
+          height={128}
           className="w-32 h-32 object-contain rounded-sm"
         />
         {sponsor.discount && <StarBadge label={sponsor.discount} />}
