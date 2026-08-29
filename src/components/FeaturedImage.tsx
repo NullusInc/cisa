@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-interface EventImagesProps {
+interface FeaturedImagesProps {
     image: string[];
     alignment: "Vertical" | "Horizontal";
     title: string;
@@ -9,10 +9,10 @@ interface EventImagesProps {
 const MAX_IMAGES = 3;
 
 const VERTICAL_FRAME =
-    "event-photo-frame--vertical relative overflow-hidden border border-black bg-neutral-200";
+    "featured-photo-frame--vertical relative overflow-hidden border border-black bg-neutral-200";
 
 const HORIZONTAL_FRAME =
-    "event-photo-frame--horizontal relative overflow-hidden border border-black bg-neutral-200";
+    "featured-photo-frame--horizontal relative overflow-hidden border border-black bg-neutral-200";
 
 type Placement = {
     wrapper: string;
@@ -86,7 +86,7 @@ const HORIZONTAL_PLACEMENT: Record<number, Placement[]> = {
     ],
 };
 
-export const EventImage = ({ image, alignment, title }: EventImagesProps) => {
+export const FeaturedImage = ({ image, alignment, title }: FeaturedImagesProps) => {
     const stack = image.slice(0, MAX_IMAGES);
     const count = stack.length;
 
@@ -104,8 +104,8 @@ export const EventImage = ({ image, alignment, title }: EventImagesProps) => {
         <div
             className={
                 isVertical
-                    ? "event-photo-stack--vertical relative"
-                    : "event-photo-stack--horizontal relative"
+                    ? "featured-photo-stack--vertical relative"
+                    : "featured-photo-stack--horizontal relative"
             }
         >
             {stack.map((src, index) => {
@@ -114,7 +114,7 @@ export const EventImage = ({ image, alignment, title }: EventImagesProps) => {
                 return (
                     <div
                         key={`${src}-${index}`}
-                        className={`event-photo-item absolute ${
+                        className={`featured-photo-item absolute ${
                             isVertical ? "bottom-0" : "top-1/2"
                         } ${placement.wrapper}`}
                     >

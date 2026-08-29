@@ -1,5 +1,5 @@
 import { AboutSection } from "@/components/AboutSection";
-import { Events } from "@/components/Events";
+import { Featured } from "@/components/Featured";
 import { HeroSection } from "@/components/HeroSection";
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <HeroSection />
       <AboutSection />
-      <Events />
+      <Featured />
     </>
   );
 }
