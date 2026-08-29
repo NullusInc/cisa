@@ -35,7 +35,7 @@ export function SponsorCarousel() {
   }, [])
 
   return (
-    <div ref={containerRef} className="marquee-container overflow-hidden">
+    <div ref={containerRef} className="marquee-container overflow-hidden py-8 border-y-10 border-primary">
       <div
         className="flex w-max animate-marquee"
         style={{ "--repeat-count": repeatCount } as React.CSSProperties}

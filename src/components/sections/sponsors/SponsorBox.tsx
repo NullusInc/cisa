@@ -10,7 +10,7 @@ export type DiscountBoxType = {
 
 export function SponsorBox(props: DiscountBoxType) {
   return (
-    <div className="group flex flex-col justify-center items-center mb-24 px-6 w-48 shrink-0">
+    <div className="group flex flex-col justify-center items-center px-6 w-48 shrink-0">
       <div className="relative">
         <Image
           src={props.image}
