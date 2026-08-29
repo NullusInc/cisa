@@ -1,4 +1,9 @@
-import { DiscountBoxType } from "@/components/sections/sponsors/SponsorBox"
+export type DiscountBoxType = {
+  companyName: string;
+  discountDescription: string;
+  discount?: string;
+  image: string;
+}
 
 export const discountBoxes: DiscountBoxType[] = [
   {
