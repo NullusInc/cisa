@@ -109,3 +109,28 @@ body {
     clip-path: none;
   }
 }
+
+.footer-grid {
+  container-type: inline-size;
+  --footer-cell: calc(100cqw / 14);
+  width: calc(100% + var(--page-frame) * 2);
+  margin-left: calc(var(--page-frame) * -1);
+  height: calc(var(--footer-cell) * 4);
+  border-top: 4px solid var(--primary);
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      var(--primary) 0,
+      var(--primary) 1px,
+      transparent 1px,
+      transparent var(--footer-cell)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--primary) 0,
+      var(--primary) 1px,
+      transparent 1px,
+      transparent var(--footer-cell)
+    );
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
