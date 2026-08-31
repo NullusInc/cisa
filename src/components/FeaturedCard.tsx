@@ -4,8 +4,10 @@ import { FeaturedImage } from "./FeaturedImage";
 interface FeaturedCardProps {
     title: string;
     image: string[];
-    date: Date;
+    imageAlts?: string[];
+    date?: Date;
     alignment: "Vertical" | "Horizontal";
+    href: string;
     style?: CSSProperties;
 }
 
@@ -25,35 +27,42 @@ function toDateValue(date: Date) {
 export const FeaturedCard = ({
     title,
     image,
+    imageAlts,
     date,
     alignment,
+    href,
     style,
 }: FeaturedCardProps) => {
     return (
-        <article
-            tabIndex={0}
-            className="featured-grid group relative overflow-hidden hover:z-20 hover:overflow-visible focus-within:z-20 focus-within:overflow-visible focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="featured-grid group relative overflow-hidden text-inherit no-underline hover:z-20 hover:overflow-visible focus-within:z-20 focus-within:overflow-visible focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             style={style}
         >
             <h3
                 title={title}
-                className="absolute left-0 top-[calc(var(--featured-row)*0.15)] z-10 flex h-[calc(var(--featured-row)*0.32)] w-[calc(var(--featured-col)*2.15)] min-w-0 items-center bg-primary px-[0.35em] font-sans text-[length:calc(var(--featured-col)*0.16)] font-bold tracking-tight text-background"
+                className="absolute left-0 top-[calc(var(--featured-row)*0.15)] z-20 flex h-[calc(var(--featured-row)*0.32)] w-fit max-w-[calc(var(--featured-col)*3.5)] min-w-0 items-center bg-primary px-[0.35em] font-sans text-[length:calc(var(--featured-col)*0.12)] font-bold tracking-tight text-background"
             >
                 <span className="min-w-0 truncate">{title}</span>
             </h3>
-            <time
-                dateTime={toDateValue(date)}
-                className="col-start-4 row-start-3 z-10 flex items-end justify-center overflow-hidden px-0.5 pb-[0.2em] font-sans text-[length:calc(var(--featured-col)*0.12)] leading-none tabular-nums tracking-tight whitespace-nowrap text-primary"
-            >
-                {dateFormatter.format(date)}
-            </time>
+            {date ? (
+                <time
+                    dateTime={toDateValue(date)}
+                    className="col-start-4 row-start-3 z-20 flex items-end justify-center overflow-hidden px-0.5 pb-[0.2em] font-sans text-[length:calc(var(--featured-col)*0.12)] leading-none tabular-nums tracking-tight whitespace-nowrap text-primary"
+                >
+                    {dateFormatter.format(date)}
+                </time>
+            ) : null}
             <div className="col-span-4 col-start-1 row-span-3 row-start-1 flex items-center justify-center">
                 <FeaturedImage
                     image={image}
+                    imageAlts={imageAlts}
                     alignment={alignment}
                     title={title}
                 />
             </div>
-        </article>
+        </a>
     );
 };

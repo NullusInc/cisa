@@ -4,6 +4,7 @@ interface FeaturedImagesProps {
     image: string[];
     alignment: "Vertical" | "Horizontal";
     title: string;
+    imageAlts?: string[];
 }
 
 const MAX_IMAGES = 3;
@@ -64,7 +65,7 @@ const HORIZONTAL_PLACEMENT: Record<number, Placement[]> = {
         },
         {
             wrapper:
-                "left-1/2 z-10 -translate-x-[52%] -translate-y-[calc(50%-0.85rem)] group-hover:-translate-y-[calc(50%-1.7rem)] group-focus-within:-translate-y-[calc(50%-1.7rem)]",
+                "left-1/2 z-10 -translate-x-[52%] -translate-y-[calc(50%-0.85rem)] group-hover:-translate-y-[calc(50%-3.2rem)] group-focus-within:-translate-y-[calc(50%-3.2rem)]",
             frame: "-rotate-[4deg] group-hover:-rotate-[8deg] group-focus-within:-rotate-[8deg]",
         },
     ],
@@ -75,18 +76,23 @@ const HORIZONTAL_PLACEMENT: Record<number, Placement[]> = {
         },
         {
             wrapper:
-                "left-1/2 z-10 -translate-x-[54%] -translate-y-[calc(50%+1.3rem)] group-hover:-translate-x-[56%] group-hover:-translate-y-[calc(50%+2.2rem)] group-focus-within:-translate-x-[56%] group-focus-within:-translate-y-[calc(50%+2.2rem)]",
+                "left-1/2 z-10 -translate-x-[54%] -translate-y-[calc(50%+1.3rem)] group-hover:-translate-x-[60%] group-hover:-translate-y-[calc(50%+3.8rem)] group-focus-within:-translate-x-[60%] group-focus-within:-translate-y-[calc(50%+3.8rem)]",
             frame: "-rotate-[5deg] group-hover:-rotate-[9deg] group-focus-within:-rotate-[9deg]",
         },
         {
             wrapper:
-                "left-1/2 z-20 -translate-x-[46%] -translate-y-[calc(50%-1.3rem)] group-hover:-translate-x-[44%] group-hover:-translate-y-[calc(50%-2.2rem)] group-focus-within:-translate-x-[44%] group-focus-within:-translate-y-[calc(50%-2.2rem)]",
+                "left-1/2 z-20 -translate-x-[46%] -translate-y-[calc(50%-1.3rem)] group-hover:-translate-x-[40%] group-hover:-translate-y-[calc(50%-3.8rem)] group-focus-within:-translate-x-[40%] group-focus-within:-translate-y-[calc(50%-3.8rem)]",
             frame: "rotate-[4deg] group-hover:rotate-[9deg] group-focus-within:rotate-[9deg]",
         },
     ],
 };
 
-export const FeaturedImage = ({ image, alignment, title }: FeaturedImagesProps) => {
+export const FeaturedImage = ({
+    image,
+    alignment,
+    title,
+    imageAlts,
+}: FeaturedImagesProps) => {
     const stack = image.slice(0, MAX_IMAGES);
     const count = stack.length;
 
@@ -121,10 +127,16 @@ export const FeaturedImage = ({ image, alignment, title }: FeaturedImagesProps) 
                         <div className={`${frame} ${placement.frame}`.trim()}>
                             <Image
                                 src={src}
-                                alt={`${title} photo ${index + 1}`}
+                                alt={imageAlts?.[index] ?? `${title} photo ${index + 1}`}
                                 fill
-                                className="object-cover"
-                                sizes={isVertical ? "256px" : "384px"}
+                                className={
+                                    isVertical ? "object-cover object-top" : "object-cover"
+                                }
+                                sizes={
+                                    isVertical
+                                        ? "(min-width: 1280px) 28vw, (min-width: 640px) 50vw, 200px"
+                                        : "(min-width: 1280px) 32vw, (min-width: 640px) 55vw, 280px"
+                                }
                             />
                         </div>
                     </div>
