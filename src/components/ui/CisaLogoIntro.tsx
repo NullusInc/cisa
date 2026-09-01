@@ -133,7 +133,7 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
         className={
           isCentered
             ? 'fixed inset-0 z-30 flex items-center justify-center'
-            : 'fixed z-30 flex justify-center top-[calc(2rem+var(--page-frame))] right-0 left-0 sm:right-auto sm:left-[calc(1.5rem+var(--page-frame))] sm:justify-start'
+            : 'absolute z-30 flex justify-center top-[calc(2rem+var(--page-frame))] right-0 left-0 sm:right-auto sm:left-[calc(1.5rem+var(--page-frame))] sm:justify-start'
         }
       >
         <div
