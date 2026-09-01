@@ -154,8 +154,9 @@ body {
 }
 
 .featured-photo-stack--vertical {
-  width: calc(var(--featured-cell) * 4 * 1236 / 1600);
-  height: calc(var(--featured-cell) * 4);
+  width: calc(var(--featured-cell) * 3.5 * 1236 / 1600);
+  height: calc(var(--featured-cell) * 3.5);
+  margin-top: calc(var(--featured-cell) * 0.4);
 }
 
 .featured-photo-stack--horizontal {
@@ -164,8 +165,8 @@ body {
 }
 
 .featured-photo-frame--vertical {
-  width: calc(var(--featured-cell) * 4 * 1236 / 1600);
-  height: calc(var(--featured-cell) * 4);
+  width: calc(var(--featured-cell) * 3.5 * 1236 / 1600);
+  height: calc(var(--featured-cell) * 3.5);
 }
 
 .featured-photo-frame--horizontal {
@@ -176,8 +177,8 @@ body {
 .featured-photo-frame--vertical,
 .featured-photo-frame--horizontal {
   box-shadow:
-    0 0.4rem 0.85rem rgb(0 0 0 / 0.22),
-    0 0.12rem 0.28rem rgb(0 0 0 / 0.14);
+    0 1.1rem 2.2rem rgb(0 0 0 / 0.38),
+    0 0.4rem 0.8rem rgb(0 0 0 / 0.22);
 }
 
 .group:hover .featured-photo-frame--vertical,
@@ -185,8 +186,8 @@ body {
 .group:hover .featured-photo-frame--horizontal,
 .group:focus-within .featured-photo-frame--horizontal {
   box-shadow:
-    0 0.75rem 1.5rem rgb(0 0 0 / 0.3),
-    0 0.2rem 0.45rem rgb(0 0 0 / 0.16);
+    0 1.6rem 3rem rgb(0 0 0 / 0.42),
+    0 0.55rem 1.1rem rgb(0 0 0 / 0.24);
 }
 
 .featured-photo-item,
