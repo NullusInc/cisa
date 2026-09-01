@@ -18,11 +18,11 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative w-full h-dvh overflow-hidden"
+      className="relative w-full h-dvh"
       aria-busy={!heroVisible}
     >
       <div
-        className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
+        className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ease-out ${
           heroVisible ? 'opacity-100' : 'opacity-0'
         }`}
       >
