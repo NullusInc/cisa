@@ -77,6 +77,36 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
     };
   }, [phase]);
 
+  useLayoutEffect(() => {
+    const html = document.documentElement;
+    const { body } = document;
+    const previous = {
+      htmlOverflow: html.style.overflow,
+      bodyOverflow: body.style.overflow,
+    };
+
+    html.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+
+    if (phase !== 'settled') {
+      return () => {
+        html.style.overflow = previous.htmlOverflow;
+        body.style.overflow = previous.bodyOverflow;
+      };
+    }
+
+    const timer = window.setTimeout(() => {
+      html.style.overflow = previous.htmlOverflow;
+      body.style.overflow = previous.bodyOverflow;
+    }, OVERLAY_FADE_MS);
+
+    return () => {
+      window.clearTimeout(timer);
+      html.style.overflow = previous.htmlOverflow;
+      body.style.overflow = previous.bodyOverflow;
+    };
+  }, [phase]);
+
   useEffect(() => {
     if (phase === 'grow') {
       const timer = window.setTimeout(
