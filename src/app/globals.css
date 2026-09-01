@@ -48,6 +48,14 @@ body {
   box-sizing: border-box;
 }
 
+h1, h2 {
+  letter-spacing: -0.06em;
+}
+
+p {
+  letter-spacing: -0.05em;
+}
+
 @media (min-width: 640px) {
   :root {
     --page-frame: 18px;
