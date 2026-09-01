@@ -43,7 +43,7 @@ export const FeaturedCard = ({
         >
             <h3
                 title={title}
-                className="absolute left-0 top-[calc(var(--featured-row)*0.15)] z-20 flex h-[calc(var(--featured-row)*0.32)] w-fit max-w-[calc(var(--featured-col)*3.5)] min-w-0 items-center bg-primary px-[0.35em] font-sans text-[length:calc(var(--featured-col)*0.12)] font-bold tracking-tight text-background"
+                className="absolute left-0 top-[calc(var(--featured-row)*0.15)] z-20 flex h-[calc(var(--featured-row)*0.32)] w-fit max-w-[calc(var(--featured-col)*3.5)] min-w-0 items-center bg-primary px-[calc((var(--featured-row)*0.32-1em)/2)] font-sans text-[length:calc(var(--featured-col)*0.12)] font-bold tracking-tight text-background"
             >
                 <span className="min-w-0 truncate">{title}</span>
             </h3>

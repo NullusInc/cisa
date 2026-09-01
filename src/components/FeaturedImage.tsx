@@ -10,10 +10,10 @@ interface FeaturedImagesProps {
 const MAX_IMAGES = 3;
 
 const VERTICAL_FRAME =
-    "featured-photo-frame--vertical relative overflow-hidden border border-black bg-neutral-200";
+    "featured-photo-frame--vertical relative overflow-hidden bg-neutral-200";
 
 const HORIZONTAL_FRAME =
-    "featured-photo-frame--horizontal relative overflow-hidden border border-black bg-neutral-200";
+    "featured-photo-frame--horizontal relative overflow-hidden bg-neutral-200";
 
 type Placement = {
     wrapper: string;
@@ -129,9 +129,7 @@ export const FeaturedImage = ({
                                 src={src}
                                 alt={imageAlts?.[index] ?? `${title} photo ${index + 1}`}
                                 fill
-                                className={
-                                    isVertical ? "object-cover object-top" : "object-cover"
-                                }
+                                className="object-cover"
                                 sizes={
                                     isVertical
                                         ? "(min-width: 1280px) 28vw, (min-width: 640px) 50vw, 200px"
