@@ -5,8 +5,8 @@ import Image from 'next/image';
 export function Footer() {
   return (
     <footer className="footer-grid relative">
-      <div className="absolute left-1/20 top-1/6 bg-primary w-[28%] h-[70%] flex flex-col items-center justify-center text-white">
-        <div className="flex flex-col gap-1 text-left font-medium *:text-[clamp(1.125rem,2.2cqw,1.875rem)]">
+      <div className="absolute left-1/20 top-1/6 bg-primary w-[28%] h-[70%] flex flex-col items-center justify-center text-white [container-type:inline-size]">
+        <div className="flex flex-col gap-1 text-left font-medium *:text-[clamp(1.125rem,7.86cqw,1.875rem)]">
           <div>@saplcisa</div>
           <div>hello@saplcisa.com</div>
           <div>801 7 Ave AW, room 713</div>
@@ -18,7 +18,7 @@ export function Footer() {
               width={800}
               height={800}
               priority
-              className="h-[clamp(2rem,4.5cqw,3rem)] w-auto brightness-0 invert"
+              className="h-[clamp(2rem,16.07cqw,3rem)] w-auto brightness-0 invert"
             />
           </a>
         </div>
