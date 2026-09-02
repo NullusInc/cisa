@@ -31,6 +31,26 @@ export function Footer() {
           className="object-contain"
         />
       </div>
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Back to top"
+        className="absolute right-1/22 bottom-[15.385%] flex aspect-square w-[5%] items-center justify-center bg-primary text-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-4/5 w-4/5"
+        >
+          <path d="M12 19V5" />
+          <path d="M5 12l7-7 7 7" />
+        </svg>
+      </button>
     </footer>
   );
 }
