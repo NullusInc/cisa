@@ -5,12 +5,12 @@ import Image from 'next/image';
 export function Footer() {
   return (
     <footer className="footer-grid relative">
-      <div className="absolute left-1/20 top-1/5 bg-primary w-[28%] h-[70%] flex flex-col items-center justify-center text-white">
-        <div className="flex flex-col gap-1 text-left *:text-[clamp(1.125rem,2.2vw,1.875rem)]">
+      <div className="absolute left-1/20 top-1/6 bg-primary w-[28%] h-[70%] flex flex-col items-center justify-center text-white">
+        <div className="flex flex-col gap-1 text-left font-medium *:text-[clamp(1.125rem,2.2cqw,1.875rem)]">
           <div>@saplcisa</div>
           <div>hello@saplcisa.com</div>
           <div>801 7 Ave AW, room 713</div>
-          <p className="mt-8 mb-1 font-light">Powered by</p>
+          <p className="mt-8 mb-1 font-medium">Powered by</p>
           <a href="https://www.nullus.ca/" target="_blank" rel="noopener noreferrer">
             <Image
               src="/images/branding/NULLUS_FULL_LOGO.svg"
@@ -18,7 +18,7 @@ export function Footer() {
               width={800}
               height={800}
               priority
-              className="h-[clamp(2rem,4.5vw,3rem)] w-auto brightness-0 invert"
+              className="h-[clamp(2rem,4.5cqw,3rem)] w-auto brightness-0 invert"
             />
           </a>
         </div>
@@ -35,7 +35,7 @@ export function Footer() {
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         aria-label="Back to top"
-        className="absolute right-1/22 bottom-[15.385%] flex aspect-square w-[5%] items-center justify-center bg-primary text-white"
+        className="absolute right-1/19 bottom-1/8 flex aspect-square w-[5%] cursor-pointer items-center justify-center bg-primary text-white"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
