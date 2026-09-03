@@ -27,7 +27,7 @@ export function HeroSection() {
         }`}
       >
         <HeroCanvas />
-        <div className="absolute inset-x-4 top-2/3 z-10 sm:inset-x-8 sm:bottom-6 sm:top-auto lg:right-12">
+        <div className="absolute left-4 right-6 top-2/3 z-10 sm:left-8 sm:right-8 sm:bottom-6 sm:top-auto lg:right-18">
           <h1 className="font-sans w-full text-right text-[clamp(1.75rem,0.7rem+5.4vw,6rem)] font-bold leading-[0.9] text-primary mb-8 sm:mb-12">
             City Innovation
             <br />
