@@ -38,7 +38,7 @@ export const FeaturedCard = ({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="featured-grid group relative overflow-hidden text-inherit no-underline hover:z-20 hover:overflow-visible focus-within:z-20 focus-within:overflow-visible focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="featured-grid group relative overflow-visible text-inherit no-underline hover:z-20 focus-within:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             style={style}
         >
             <h3

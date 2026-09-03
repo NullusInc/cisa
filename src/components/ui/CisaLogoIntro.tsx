@@ -28,7 +28,8 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
   const logoRef = useRef<HTMLDivElement>(null);
   const fromRectRef = useRef<DOMRect | null>(null);
   const completedRef = useRef(false);
-  const [phase, setPhase] = useState<Phase>('prepare');
+  const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const [phase, setPhase] = useState<Phase>(prefersReducedMotion ? 'settled' : 'prepare');
 
   const finish = useCallback(() => {
     if (completedRef.current) return;
@@ -38,14 +39,13 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
   }, [onComplete]);
 
   useEffect(() => {
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (media.matches) {
-      const idle = window.requestAnimationFrame(() => finish());
-      return () => window.cancelAnimationFrame(idle);
+    if (prefersReducedMotion) {
+      finish();
+      return;
     }
     const start = window.requestAnimationFrame(() => setPhase('grow'));
     return () => window.cancelAnimationFrame(start);
-  }, [finish]);
+  }, [finish, prefersReducedMotion]);
 
   useLayoutEffect(() => {
     const html = document.documentElement;
