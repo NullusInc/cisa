@@ -3,8 +3,8 @@ import SectionTitle from "@/components/ui/SectionTitle";
 
 export function SponsorsSection() {
   return (
-    <section>
-      <div className="my-2 sm:my-6 mx-6 sm:mx-8 lg:mx-18">
+    <section className="py-16 sm:py-24">
+      <div className="px-6 sm:px-8 lg:px-18">
         <SectionTitle text="Membership" />
         <SectionTitle text="Discounts" />
       </div>
