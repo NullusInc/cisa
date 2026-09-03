@@ -18,17 +18,17 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative w-full h-dvh overflow-hidden"
+      className="relative w-full h-dvh"
       aria-busy={!heroVisible}
     >
       <div
-        className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
+        className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ease-out ${
           heroVisible ? 'opacity-100' : 'opacity-0'
         }`}
       >
         <HeroCanvas />
-        <div className="absolute inset-x-4 top-2/3 z-10 sm:inset-x-8 sm:bottom-6 sm:top-auto lg:right-12">
-          <h1 className="font-sans w-full text-right text-[clamp(1.75rem,0.7rem+5.4vw,6rem)] font-bold leading-[0.9] text-primary">
+        <div className="absolute left-4 right-6 top-2/3 z-10 sm:left-8 sm:right-8 sm:bottom-6 sm:top-auto lg:right-18">
+          <h1 className="font-sans w-full text-right text-[clamp(1.75rem,0.7rem+5.4vw,6rem)] font-bold leading-[0.9] text-primary mb-8 sm:mb-12">
             City Innovation
             <br />
             Students’ Association

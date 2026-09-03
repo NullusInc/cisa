@@ -20,6 +20,7 @@ const HOLD_DELAY_MS = 120;
 const DOCK_DURATION_MS = 900;
 const DOCK_FALLBACK_MS = DOCK_DURATION_MS + PHASE_BUFFER_MS * 2;
 const DOCK_EASING = 'cubic-bezier(0.65, 0, 0.35, 1)';
+const OVERLAY_FADE_MS = 700;
 
 type Phase = 'prepare' | 'grow' | 'fill' | 'hold' | 'dock' | 'settled';
 
@@ -27,7 +28,8 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
   const logoRef = useRef<HTMLDivElement>(null);
   const fromRectRef = useRef<DOMRect | null>(null);
   const completedRef = useRef(false);
-  const [phase, setPhase] = useState<Phase>('prepare');
+  const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const [phase, setPhase] = useState<Phase>(prefersReducedMotion ? 'settled' : 'prepare');
 
   const finish = useCallback(() => {
     if (completedRef.current) return;
@@ -37,14 +39,43 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
   }, [onComplete]);
 
   useEffect(() => {
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (media.matches) {
-      const idle = window.requestAnimationFrame(() => finish());
-      return () => window.cancelAnimationFrame(idle);
+    if (prefersReducedMotion) {
+      finish();
+      return;
     }
     const start = window.requestAnimationFrame(() => setPhase('grow'));
     return () => window.cancelAnimationFrame(start);
-  }, [finish]);
+  }, [finish, prefersReducedMotion]);
+
+  useLayoutEffect(() => {
+    const html = document.documentElement;
+    const { body } = document;
+    const previous = {
+      htmlOverflow: html.style.overflow,
+      bodyOverflow: body.style.overflow,
+    };
+
+    html.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+
+    if (phase !== 'settled') {
+      return () => {
+        html.style.overflow = previous.htmlOverflow;
+        body.style.overflow = previous.bodyOverflow;
+      };
+    }
+
+    const timer = window.setTimeout(() => {
+      html.style.overflow = previous.htmlOverflow;
+      body.style.overflow = previous.bodyOverflow;
+    }, OVERLAY_FADE_MS);
+
+    return () => {
+      window.clearTimeout(timer);
+      html.style.overflow = previous.htmlOverflow;
+      body.style.overflow = previous.bodyOverflow;
+    };
+  }, [phase]);
 
   useEffect(() => {
     if (phase === 'grow') {
@@ -123,7 +154,7 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
   return (
     <>
       <div
-        className={`fixed inset-0 z-20 bg-background transition-opacity duration-700 ${
+        className={`fixed inset-0 z-50 bg-background transition-opacity duration-700 ${
           phase === 'settled' ? 'pointer-events-none opacity-0' : 'opacity-100'
         }`}
         aria-hidden
@@ -132,8 +163,8 @@ export function CisaLogoIntro({ onComplete }: { onComplete: () => void }) {
       <div
         className={
           isCentered
-            ? 'fixed inset-0 z-30 flex items-center justify-center'
-            : 'absolute z-30 flex justify-center top-[calc(2rem+var(--page-frame))] right-0 left-0 sm:right-auto sm:left-[calc(1.5rem+var(--page-frame))] sm:justify-start'
+            ? 'fixed inset-0 z-50 flex items-center justify-center'
+            : 'absolute z-50 flex justify-center top-[calc(2rem+var(--page-frame))] right-0 left-0 sm:right-auto sm:left-[calc(1.5rem+var(--page-frame))] sm:justify-start'
         }
       >
         <div
