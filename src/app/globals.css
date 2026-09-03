@@ -237,7 +237,6 @@ p {
   --footer-cell: calc((100cqw - var(--page-frame) * 2) / 14);
   width: calc(100% + var(--page-frame) * 2);
   margin-left: calc(var(--page-frame) * -1);
-  height: calc(var(--footer-cell) * 4);
   border-top: var(--page-frame) solid var(--primary);
   background-position: var(--page-frame) 0;
   background-image:
