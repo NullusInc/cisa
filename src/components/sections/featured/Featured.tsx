@@ -1,4 +1,4 @@
-import { FeaturedCard } from "./FeaturedCard";
+import { FeaturedCard } from "@/components/sections/featured/FeaturedCard";
 import SectionTitle from "@/components/ui/SectionTitle";
 
 type FeaturedItem = {
@@ -60,12 +60,12 @@ function splitFeaturedColumns(items: FeaturedItem[]) {
     return { left, right };
 }
 
-export const Featured = () => {
+export const FeaturedSection = () => {
     const { left, right } = splitFeaturedColumns(featured);
 
     return (
         <section className="featured-section flex w-full justify-center py-16 sm:py-24  ">
-            <div className="featured-board relative mx-auto grid w-fit max-w-full grid-cols-1 items-start justify-items-center gap-x-12 gap-y-8 xl:grid-cols-[auto_auto] xl:justify-items-stretch">
+            <div className="featured-board relative mx-18 grid w-full grid-cols-1 items-start justify-items-center gap-x-12 gap-y-8 xl:grid-cols-[auto_auto] xl:justify-items-stretch">
                 <SectionTitle
                     text="Featured"
                     className="z-10 xl:absolute xl:left-0 xl:top-2 xl:w-auto"

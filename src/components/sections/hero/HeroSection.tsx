@@ -18,7 +18,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative w-full h-dvh"
+      className="relative w-full h-dvh max-h-[2000px]"
       aria-busy={!heroVisible}
     >
       <div

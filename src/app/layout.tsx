@@ -26,8 +26,12 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
       <body className="font-sans">
-        {children}
-        <Footer />
+        <div className="page-frame h-screen w-full fixed inset-0 bg-primary">
+          <div className="h-full w-full overflow-y-auto rounded-3xl bg-background">
+            {children}
+            <Footer />
+          </div>
+        </div>
       </body>
     </html>
   );

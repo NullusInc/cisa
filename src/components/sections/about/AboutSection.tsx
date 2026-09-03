@@ -1,8 +1,8 @@
 export function AboutSection() {
   return (
-    <section className="relative flex w-full min-h-dvh items-center justify-center bg-background sm:justify-start">
+    <section className="relative flex w-full h-dvh max-h-375 items-center justify-center bg-background sm:justify-start">
       <div className="px-6 text-center sm:px-8 sm:pl-8 sm:pr-0 sm:text-left lg:pl-18">
-        <div className="max-w-full sm:max-w-[60vw] sm:pr-8 lg:pr-12">
+        <div className="max-w-7xl sm:pr-8 lg:pr-12">
           <p className="font-sans text-left text-foreground text-md sm:text-[clamp(1.2rem,0.8rem+1.6vw,2.4rem)] lg:text-[clamp(1rem,0.64rem+0.8vw,1.6rem)] leading-snug sm:leading-relaxed">
             <span className="font-bold">The City Innovation Students&rsquo; Association</span> (CISA) is the
             undergraduate student governing body within UCalgary&rsquo;s
