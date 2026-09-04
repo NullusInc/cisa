@@ -10,6 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://cisa.ucalgary.ca"),
   title: "CISA - City Innovation Students' Association",
   description:
     "The City Innovation Students' Association (CISA) is the undergraduate student governing body within UCalgary's School of Architecture, Planning and Landscape. Our mission is to represent academic student interests and foster an inclusive community.",
@@ -22,10 +23,23 @@ export const metadata: Metadata = {
     "Planning",
     "Landscape",
     "Student Government",
+    "Campus Life",
+    "Student Events",
+    "Membership",
   ],
   authors: [{ name: "CISA - City Innovation Students' Association" }],
   creator: "City Innovation Students' Association",
   publisher: "City Innovation Students' Association",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_CA",
