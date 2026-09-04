@@ -1,0 +1,24 @@
+# robots.txt for CISA Website
+# Allows search engines to crawl and index the site
+
+# Allow all bots
+User-agent: *
+Allow: /
+
+# Disallow private or admin pages (if any)
+Disallow: /api/
+Disallow: /.next/
+Disallow: /private/
+
+# Allow specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://cisa.ucalgary.ca/sitemap.xml
+
+# Crawl delay (optional - prevent server overload)
+# Crawl-delay: 1
