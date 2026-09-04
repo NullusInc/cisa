@@ -18,18 +18,25 @@ export const metadata: Metadata = {
     "CISA",
     "City Innovation",
     "Students Association",
+    "University of Calgary",
     "UCalgary",
-    "Architecture",
-    "Planning",
-    "Landscape",
+    "School of Architecture",
+    "Planning and Landscape",
     "Student Government",
     "Campus Life",
     "Student Events",
     "Membership",
+    "Discounts",
+    "Student Organization",
+    "Calgary",
+    "Alumni",
   ],
   authors: [{ name: "CISA - City Innovation Students' Association" }],
   creator: "City Innovation Students' Association",
   publisher: "City Innovation Students' Association",
+  category: "Education",
+  applicationName: "CISA",
+  referrer: "strict-origin-when-cross-origin",
   robots: {
     index: true,
     follow: true,
@@ -65,9 +72,17 @@ export const metadata: Metadata = {
     images: ["/images/branding/CISA-Logo-Orange.svg"],
   },
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+      { url: "/favicon.png", sizes: "256x256", type: "image/png" },
+    ],
     apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
   },
+  alternates: {
+    canonical: "https://cisa.ucalgary.ca",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export const viewport: Viewport = {
