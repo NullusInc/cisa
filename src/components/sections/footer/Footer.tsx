@@ -68,7 +68,9 @@ export function Footer() {
 
       <button
         type="button"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onClick={() =>
+          document.getElementById('scroll-container')?.scrollTo({ top: 0, behavior: 'smooth' })
+        }
         aria-label="Back to top"
         className="flex aspect-square w-[clamp(2rem,1.5rem+2vw,4rem)] shrink-0 cursor-pointer items-center justify-center bg-primary text-background justify-self-end"
       >
