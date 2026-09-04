@@ -1,11 +1,19 @@
 'use client';
 
 import Image from 'next/image';
+import { useRef } from 'react';
+import { FooterGridCellSizer } from './FooterGridCellSizer';
 import { UpArrowBox } from './UpArrowBox';
 
 export function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+
   return (
-    <footer className="footer-grid relative grid grid-cols-3 items-end p-24 @container">
+    <footer
+      ref={footerRef}
+      className="footer-grid relative grid grid-cols-3 items-end p-24 @container"
+    >
+      <FooterGridCellSizer targetRef={footerRef} />
       <div className="bg-primary text-background flex flex-col items-center justify-center py-8 px-8 sm:py-12 sm:px-20 justify-self-start">
         <div className="flex flex-col gap-1 text-left font-medium text-[clamp(1rem,0.6rem+1vw,1.6rem)] [&>a]:flex [&>a]:items-center [&>a]:gap-2">
           <a href="https://www.instagram.com/saplcisa/" target="_blank" rel="noopener noreferrer">
