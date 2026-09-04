@@ -21,7 +21,7 @@ export function Footer() {
           <a href="mailto:hello@saplcisa.com">
             <Image
               src="/images/footer/email.svg"
-              alt=""
+              alt="Email Logo"
               width={64}
               height={64}
               className="h-[0.8em] w-[0.8em] shrink-0 object-contain"
@@ -35,7 +35,7 @@ export function Footer() {
           >
             <Image
               src="/images/footer/location-01.svg"
-              alt=""
+              alt="Location Logo"
               width={64}
               height={64}
               className="h-[0.8em] w-[0.8em] shrink-0 object-contain"
