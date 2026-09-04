@@ -10,9 +10,50 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "City Innovation Students' Association",
+  title: "CISA - City Innovation Students' Association",
   description:
-    "The City Innovation Students' Association (CISA) is the undergraduate government body with the mission to represent academic student interests and foster an inclusive community within the School of Architecture, Planning and Landscape.",
+    "The City Innovation Students' Association (CISA) is the undergraduate student governing body within UCalgary's School of Architecture, Planning and Landscape. Our mission is to represent academic student interests and foster an inclusive community.",
+  keywords: [
+    "CISA",
+    "City Innovation",
+    "Students Association",
+    "UCalgary",
+    "Architecture",
+    "Planning",
+    "Landscape",
+    "Student Government",
+  ],
+  authors: [{ name: "CISA - City Innovation Students' Association" }],
+  creator: "City Innovation Students' Association",
+  publisher: "City Innovation Students' Association",
+  openGraph: {
+    type: "website",
+    locale: "en_CA",
+    url: "https://cisa.ucalgary.ca",
+    title: "CISA - City Innovation Students' Association",
+    description:
+      "The undergraduate student governing body of UCalgary's School of Architecture, Planning and Landscape.",
+    images: [
+      {
+        url: "/images/branding/CISA-Logo-Orange.svg",
+        width: 1200,
+        height: 630,
+        alt: "CISA Logo",
+        type: "image/svg+xml",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CISA - City Innovation Students' Association",
+    description:
+      "The undergraduate student governing body of UCalgary's School of Architecture, Planning and Landscape.",
+    images: ["/images/branding/CISA-Logo-Orange.svg"],
+  },
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export const viewport: Viewport = {
