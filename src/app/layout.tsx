@@ -49,6 +49,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
+    siteName: "CISA",
     locale: "en_CA",
     url: "https://cisa.ucalgary.ca",
     title: "CISA - City Innovation Students' Association",
@@ -62,14 +63,23 @@ export const metadata: Metadata = {
         alt: "CISA Logo",
         type: "image/svg+xml",
       },
+      {
+        url: "/favicon.png",
+        width: 256,
+        height: 256,
+        alt: "CISA Logo",
+        type: "image/png",
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    site: "@cisaucalgary",
+    creator: "@cisaucalgary",
     title: "CISA - City Innovation Students' Association",
     description:
       "The undergraduate student governing body of UCalgary's School of Architecture, Planning and Landscape.",
-    images: ["/images/branding/CISA-Logo-Orange.svg"],
+    images: ["/favicon.png"],
   },
   icons: {
     icon: [
@@ -81,8 +91,20 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://cisa.ucalgary.ca",
+    languages: {
+      "en-CA": "https://cisa.ucalgary.ca",
+      "en": "https://cisa.ucalgary.ca",
+    },
   },
   manifest: "/site.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "CISA",
+  },
+  formatDetection: {
+    telephone: false,
+  },
 };
 
 export const viewport: Viewport = {
@@ -95,6 +117,60 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:;"
+        />
+        <meta
+          name="Permissions-Policy"
+          content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+        />
+        <meta name="geo.position" content="51.0447; -114.1733" />
+        <meta name="geo.placename" content="Calgary, Alberta, Canada" />
+        <meta name="geo.region" content="CA-AB" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "StudentOrganization",
+              name: "City Innovation Students' Association",
+              alternateName: "CISA",
+              url: "https://cisa.ucalgary.ca",
+              logo: "https://cisa.ucalgary.ca/images/branding/CISA-Logo-Orange.svg",
+              description:
+                "The undergraduate student governing body within UCalgary's School of Architecture, Planning and Landscape.",
+              sameAs: ["https://instagram.com/saplcisa"],
+              location: {
+                "@type": "Place",
+                name: "University of Calgary",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "801 7 Ave SW, Room 713",
+                  addressLocality: "Calgary",
+                  addressRegion: "AB",
+                  postalCode: "T2P 1A1",
+                  addressCountry: "CA",
+                },
+              },
+              parentOrganization: {
+                "@type": "EducationalOrganization",
+                name: "University of Calgary",
+                url: "https://ucalgary.ca",
+              },
+              contactPoint: {
+                "@type": "ContactPoint",
+                email: "hello@saplcisa.com",
+                contactType: "Customer Service",
+              },
+            }),
+          }}
+        />
+      </head>
       <body className="font-sans">
         <div className="page-frame h-screen w-full fixed inset-0 bg-primary">
           <div className="h-full w-full overflow-y-auto overflow-x-hidden rounded-3xl bg-background">
