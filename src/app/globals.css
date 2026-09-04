@@ -9,6 +9,7 @@
   --page-frame: 9px;
   --logo-grow-duration: 0.9s;
   --logo-fill-duration: 1.4s;
+  --content-max-width: 3000px;
 }
 
 @theme inline {
@@ -42,10 +43,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Helvetica, Arial, sans-serif;
-  border-top: var(--page-frame) solid #19502a;
-  border-left: var(--page-frame) solid #19502a;
-  border-right: var(--page-frame) solid #19502a;
-  border-bottom: var(--page-frame) solid #19502a;
   box-sizing: border-box;
 }
 
@@ -55,6 +52,14 @@ h1, h2 {
 
 p {
   letter-spacing: -0.05em;
+}
+
+.page-frame {
+  padding-block: var(--page-frame);
+  padding-inline: max(
+    var(--page-frame),
+    calc((100% - var(--content-max-width)) / 2)
+  );
 }
 
 @media (min-width: 640px) {
@@ -245,7 +250,7 @@ p {
       var(--primary) 0,
       var(--primary) 2px,
       transparent 2px,
-      transparent var(--footer-cell)
+      transparent var(--footer-cell) 
     ),
     repeating-linear-gradient(
       to bottom,
