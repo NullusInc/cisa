@@ -11,10 +11,10 @@ export function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="footer-grid relative grid grid-cols-3 items-end p-24 @container"
+      className="footer-grid relative grid h-[100svh] grid-cols-1 grid-rows-2 items-stretch px-6 py-12 @container sm:px-24 sm:py-24 sm:h-auto sm:grid-cols-3 sm:grid-rows-1 sm:items-end"
     >
       <FooterGridCellSizer targetRef={footerRef} />
-      <div className="bg-primary text-background flex flex-col items-center justify-center py-8 px-8 sm:py-12 sm:px-20 justify-self-start">
+      <div className="bg-primary text-background order-2 flex w-full flex-col items-center justify-center py-6 px-8 sm:order-none sm:w-auto sm:py-12 sm:px-20 justify-self-start">
         <div className="flex flex-col gap-1 text-left font-medium text-[clamp(1rem,0.6rem+1vw,1.6rem)] [&>a]:flex [&>a]:items-center [&>a]:gap-2">
           <a href="https://www.instagram.com/saplcisa/" target="_blank" rel="noopener noreferrer">
             <Image
@@ -64,13 +64,13 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="flex items-end justify-center justify-self-center">
+      <div className="order-1 flex w-full items-center justify-center justify-self-center sm:order-none sm:w-auto sm:items-end">
         <Image
           src="/images/branding/CISA-Logo-Orange.svg"
           alt="CISA Logo"
           height={1200}
           width={1200}
-          className="h-96 w-auto object-contain"
+          className="h-auto max-h-[38svh] w-full object-contain sm:h-96 sm:max-h-none sm:w-auto"
         />
       </div>
 
@@ -80,7 +80,7 @@ export function Footer() {
           document.getElementById('scroll-container')?.scrollTo({ top: 0, behavior: 'smooth' })
         }
         aria-label="Back to top"
-        className="flex aspect-square w-[clamp(2rem,1.5rem+2vw,4rem)] shrink-0 cursor-pointer items-center justify-center bg-primary text-background justify-self-end"
+        className="absolute bottom-6 right-6 flex aspect-square w-[clamp(2rem,1.5rem+2vw,4rem)] shrink-0 cursor-pointer items-center justify-center bg-primary text-background sm:static sm:justify-self-end"
       >
         <UpArrowBox />
       </button>
