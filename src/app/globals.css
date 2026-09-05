@@ -46,6 +46,16 @@ body {
   box-sizing: border-box;
 }
 
+/* Hide scrollbar while preserving scroll functionality */
+.page-frame > div {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.page-frame > div::-webkit-scrollbar {
+  display: none;
+}
+
 h1, h2 {
   letter-spacing: -0.06em;
 }
