@@ -16,7 +16,11 @@ export const metadata: Metadata = {
   keywords: ['CISA', 'City Innovation', 'Students Association', 'Ryerson University', 'Architecture', 'Planning', 'Landscape'],
   authors: [{ name: 'CISA' }],
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-64x64.png', sizes: '64x64', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
+    ],
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
