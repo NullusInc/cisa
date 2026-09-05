@@ -174,7 +174,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       </head>
       <body className="font-sans">
         <div className="page-frame h-screen w-full fixed inset-0 bg-primary">
-          <div className="h-full w-full overflow-y-auto overflow-x-hidden rounded-3xl bg-background">
+          <div className="h-full w-full overflow-y-auto overflow-x-hidden rounded-3xl bg-background hide-scrollbar">
             {children}
             <Footer />
           </div>
