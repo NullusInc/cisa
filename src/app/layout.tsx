@@ -18,11 +18,7 @@ export const metadata: Metadata = {
   creator: 'City Innovation Students\' Association',
   publisher: 'City Innovation Students\' Association',
   icons: {
-    icon: [
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-64x64.png', sizes: '64x64', type: 'image/png' },
-      { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
-    ],
+    icon: '/favicon.ico',
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
