@@ -239,7 +239,11 @@ p {
 
 .footer-grid {
   container-type: inline-size;
-  --footer-cell: calc((100cqw - var(--page-frame) * 2) / 14);
+  --footer-cell: clamp(
+    96px,
+    calc((100cqw - var(--page-frame) * 2) / 14),
+    calc((var(--content-max-width) - var(--page-frame) * 2) / 14)
+  );
   width: calc(100% + var(--page-frame) * 2);
   margin-left: calc(var(--page-frame) * -1);
   border-top: var(--page-frame) solid var(--primary);
