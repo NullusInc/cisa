@@ -37,6 +37,12 @@ html {
 html {
   overflow-x: hidden;
   background: var(--background);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
