@@ -1,0 +1,26 @@
+{
+  "name": "City Innovation Students' Association",
+  "short_name": "CISA",
+  "description": "The undergraduate government body representing academic student interests and fostering an inclusive community within the School of Architecture, Planning and Landscape.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fffcf4",
+  "theme_color": "#185029",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["education"],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-mobile.png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    }
+  ]
+}

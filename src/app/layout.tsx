@@ -13,6 +13,26 @@ export const metadata: Metadata = {
   title: "City Innovation Students' Association",
   description:
     "The City Innovation Students' Association (CISA) is the undergraduate government body with the mission to represent academic student interests and foster an inclusive community within the School of Architecture, Planning and Landscape.",
+  keywords: ['CISA', 'City Innovation', 'Students Association', 'Ryerson University', 'Architecture', 'Planning', 'Landscape'],
+  authors: [{ name: 'CISA' }],
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/manifest.json',
+  openGraph: {
+    title: "City Innovation Students' Association",
+    description:
+      "The City Innovation Students' Association (CISA) is the undergraduate government body with the mission to represent academic student interests and foster an inclusive community within the School of Architecture, Planning and Landscape.",
+    type: 'website',
+    url: 'https://cisaryerson.ca',
+    siteName: "City Innovation Students' Association",
+  },
+  robots: 'index, follow',
+  alternates: {
+    canonical: 'https://cisaryerson.ca',
+  },
 };
 
 export const viewport: Viewport = {
