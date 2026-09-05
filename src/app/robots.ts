@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 1,
       },
     ],
-    sitemap: 'https://cisaryerson.ca/sitemap.xml',
-    host: 'https://cisaryerson.ca',
+    sitemap: 'https://saplcisa.ca/sitemap.xml',
+    host: 'https://saplcisa.ca',
   };
 }

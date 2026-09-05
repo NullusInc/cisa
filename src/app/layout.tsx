@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       "The City Innovation Students' Association (CISA) is the undergraduate government body with the mission to represent academic student interests and foster an inclusive community within the School of Architecture, Planning and Landscape.",
     type: 'website',
-    url: 'https://cisaryerson.ca',
+    url: 'https://saplcisa.ca',
     siteName: "City Innovation Students' Association",
     locale: 'en_CA',
     countryName: 'Canada',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   alternates: {
-    canonical: 'https://cisaryerson.ca',
+    canonical: 'https://saplcisa.ca',
   },
   formatDetection: {
     telephone: true,
