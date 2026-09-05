@@ -11,11 +11,11 @@ export function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="footer-grid relative grid h-[100svh] grid-cols-1 grid-rows-2 items-stretch px-6 py-12 @container sm:px-24 sm:py-24 sm:h-auto sm:grid-cols-3 sm:grid-rows-1 sm:items-end"
+      className="footer-grid relative grid h-[100svh] grid-cols-1 grid-rows-[45fr_45fr_auto] items-stretch gap-y-0 px-6 pt-12 pb-6 @container sm:px-24 sm:py-24 sm:h-auto sm:grid-cols-3 sm:grid-rows-1 sm:items-end"
     >
       <FooterGridCellSizer targetRef={footerRef} />
       <div className="bg-primary text-background order-2 flex w-full flex-col items-center justify-center py-6 px-8 sm:order-none sm:w-auto sm:py-12 sm:px-20 justify-self-start">
-        <div className="flex flex-col gap-1 text-left font-medium text-[clamp(1rem,0.6rem+1vw,1.6rem)] [&>a]:flex [&>a]:items-center [&>a]:gap-2">
+        <div className="flex flex-col gap-1 text-left font-medium text-[clamp(1.25rem,0.75rem+1.25vw,2rem)] [&>a]:flex [&>a]:items-center [&>a]:gap-2 sm:text-[clamp(1rem,0.6rem+1vw,1.6rem)]">
           <a href="https://www.instagram.com/saplcisa/" target="_blank" rel="noopener noreferrer">
             <Image
               src="/images/footer/instagram-01.svg"
@@ -80,7 +80,7 @@ export function Footer() {
           document.getElementById('scroll-container')?.scrollTo({ top: 0, behavior: 'smooth' })
         }
         aria-label="Back to top"
-        className="absolute bottom-6 right-6 flex aspect-square w-[clamp(2rem,1.5rem+2vw,4rem)] shrink-0 cursor-pointer items-center justify-center bg-primary text-background sm:static sm:justify-self-end"
+        className="order-3 mt-6 flex aspect-square w-[clamp(3rem,2rem+4vw,5.5rem)] shrink-0 cursor-pointer items-center justify-center justify-self-center self-center bg-primary text-background sm:order-none sm:mt-0 sm:w-[clamp(2rem,1.5rem+2vw,4rem)] sm:self-auto sm:justify-self-end"
       >
         <UpArrowBox />
       </button>
